@@ -1,8 +1,11 @@
 import React from "react"
+import "./Animal.css"
 
-export default () => (
+export default ({ animal }) => (
     <section className="animal">
-        <h3 className="animal__name">Doodles</h3>
-        <div className="animal__breed">Breed: Poodle</div>
+        <h3 className="animal__name">Name: {animal.name}</h3>
+        <address className="animal__breed">Breed: {animal.breed}</address>
+        <address className="animal__customer">Customer: {animal.customerId}</address>
+        <address className="animal__location">Locaton: {animal.locationId}</address>
     </section>
 )
