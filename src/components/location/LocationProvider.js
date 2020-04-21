@@ -38,7 +38,7 @@ export const LocationProvider = (props) => {
     }, [])
 
     useEffect(() => {
-        console.log("****  LOCATION APPLICATION STATE CHANGED  ****")
+        console.log("****  LOCATION APPLICATION STATE CHANGED  ****", locations)
     }, [locations])
 
     return (
