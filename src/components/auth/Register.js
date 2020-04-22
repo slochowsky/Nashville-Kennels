@@ -40,7 +40,6 @@ const Register = props => {
                         .then(createdUser => {
                             if (createdUser.hasOwnProperty("id")) {
                                 localStorage.setItem("kennel_customer", createdUser.id)
-                                props.history.push("/")
                             }
                         })
                 })
@@ -50,16 +49,16 @@ const Register = props => {
     }
 
     return (
-        <main style={{ textAlign: "center" }}>
-            <form className="form--login" onSubmit={handleRegister}>
-                <h1 className="h3 mb-3 font-weight-normal">Please Register for NSS Kennels</h1>
+        <main className="container--login">
+            <form className="form--register" onSubmit={handleRegister}>
+                <h4 className="darkgray">If you are not a customer yet, please register a new account</h4>
                 <fieldset>
                     <label htmlFor="firstName"> First Name </label>
                     <input ref={firstName} type="text"
                         name="firstName"
                         className="form-control"
                         placeholder="First name"
-                        required autoFocus />
+                        required  />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="lastName"> Last Name </label>

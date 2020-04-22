@@ -6,34 +6,34 @@ import "./Employee.css"
 export default props => {
     const { addEmployee } = useContext(EmployeeContext)
     const { locations } = useContext(LocationContext)
-    const employeeName = useRef("")
-    const employeeLocation = useRef(0)
-    const address = useRef("")
+    const name = useRef()
+    const location = useRef()
+    const address = useRef()
 
     const constructNewEmployee = () => {
-        const locationId = parseInt(employeeLocation.current.value)
-    
+        const locationId = parseInt(location.current.value)
+
         if (locationId === 0) {
             window.alert("Please select a location")
         } else {
             addEmployee({
-                name: employeeName.current.value,
-                locationId: locationId
+                name: name.current.value,
+                locationId: locationId,
+                address: address.current.value
             })
-                .then(props.toggler)
+            .then(props.toggler)
         }
     }
 
     return (
         <form className="employeeForm">
-            <h2 className="employeeForm__title">New Employee</h2>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="employeeName">Employee name: </label>
                     <input
                         type="text"
                         id="employeeName"
-                        ref={employeeName}
+                        ref={name}
                         required
                         autoFocus
                         className="form-control"
@@ -61,7 +61,7 @@ export default props => {
                     <select
                         defaultValue=""
                         name="location"
-                        ref={employeeLocation}
+                        ref={location}
                         id="employeeLocation"
                         className="form-control"
                     >

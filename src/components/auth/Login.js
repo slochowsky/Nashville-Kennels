@@ -1,5 +1,4 @@
 import React, { useRef } from "react"
-import { Link } from "react-router-dom";
 import "./Login.css"
 
 
@@ -27,64 +26,43 @@ const Login = props => {
             .then(exists => {
                 if (exists && exists.password === password.current.value) {
                     localStorage.setItem("kennel_customer", exists.id)
-                    props.history.push("/")
+                    props.toggle()
                 } else if (exists && exists.password !== password.current.value) {
                     window.alert("Password does not match")
                 } else if (!exists) {
-                    fetch("http://localhost:8088/customers", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify({
-                            email: email.current.value,
-                            password: password.current.value,
-                            name: customerName.current.value,
-                            address: address.current.value
-                        })
-                    })
-                        .then(_ => _.json())
-                        .then(response => {
-                            localStorage.setItem("kennel_customer", response.id)
-                            props.history.push("/")
-                        })
+                    window.alert("User account does not exist")
                 }
             })
     }
 
     return (
         <main className="container--login">
-            <section>
-                <form className="form--login" onSubmit={handleLogin}>
-                    <h1>Nashville Kennels</h1>
-                    <h2>Please sign in</h2>
-                    <fieldset>
-                        <label htmlFor="inputEmail"> Email address </label>
-                        <input ref={email} type="email"
-                            id="email"
-                            className="form-control"
-                            placeholder="Email address"
-                            required autoFocus />
-                    </fieldset>
-                    <fieldset>
-                        <label htmlFor="inputPassword"> Password </label>
-                        <input ref={password} type="password"
-                            id="password"
-                            className="form-control"
-                            placeholder="Password"
-                            required />
-                    </fieldset>
-                    <fieldset>
-                        <button type="submit">
-                            Sign in
+            <form className="form--login" onSubmit={handleLogin}>
+                <h2>Please sign in</h2>
+                <fieldset>
+                    <label htmlFor="inputEmail"> Email address </label>
+                    <input ref={email} type="email"
+                        id="email"
+                        className="form-control"
+                        placeholder="Email address"
+                        required autoFocus />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="inputPassword"> Password </label>
+                    <input ref={password} type="password"
+                        id="password"
+                        className="form-control"
+                        placeholder="Password"
+                        required />
+                </fieldset>
+                <fieldset>
+                    <button type="submit">
+                        Sign in
                     </button>
-                    </fieldset>
-                </form>
-            </section>
-            <section className="link--register">
-                <Link to="/register">Not a member yet?</Link>
-            </section>
+                </fieldset>
+            </form>
         </main>
     )
 }
+
 export default Login

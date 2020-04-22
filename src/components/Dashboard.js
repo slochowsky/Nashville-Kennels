@@ -1,5 +1,4 @@
 import React from "react"
-import { Button } from 'reactstrap';
 import "./Kennel.css"
 import { LocationProvider } from "./location/LocationProvider"
 import { EmployeeProvider } from "./employee/EmployeeProvider"

@@ -1,9 +1,12 @@
-import React from "react"
+import React, { useState } from "react"
 import Dashboard from "./Dashboard"
-import Login from "./auth/Login"
-import Register from "./auth/Register"
-import "./Kennel.css"
+import Auth from "./auth/Auth"
 
-export default () => (
-    localStorage.getItem("kennel_customer") ? <Dashboard /> : <Auth />
-)
+export default () => {
+    const [check, update] = useState(false)
+    const toggle = () => update(!check)
+
+    return (
+        localStorage.getItem("kennel_customer") ? <Dashboard /> : <Auth toggle={toggle} />
+    )
+}
