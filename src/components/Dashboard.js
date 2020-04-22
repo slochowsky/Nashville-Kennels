@@ -8,6 +8,7 @@ import AnimalList from "./animal/AnimalList"
 import LocationList from "./location/LocationList"
 import EmployeeList from "./employee/EmployeeList"
 import CustomerList from "./customer/CustomerList"
+import AnimalSearch from "./animal/AnimalSearch"
 
 export default () => (
     <>
@@ -32,6 +33,7 @@ export default () => (
         <AnimalProvider>
             <LocationProvider>
                 <CustomerProvider>
+                    <AnimalSearch />
                     <AnimalList />
                 </CustomerProvider>
             </LocationProvider>

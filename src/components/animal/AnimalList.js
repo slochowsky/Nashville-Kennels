@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useState, useEffect } from "react"
 import { Button, Modal, ModalHeader, ModalBody } from "reactstrap"
 import { AnimalContext } from "./AnimalProvider"
 import { LocationContext } from "../location/LocationProvider"
@@ -9,12 +9,22 @@ import "./Animal.css"
 
 
 export default () => {
-    const { animals } = useContext(AnimalContext)
+    const { animals, searchTerm, setAnimals } = useContext(AnimalContext)
+    const [ filteredAnimals, setFiltered ] = useState([])
     const { locations } = useContext(LocationContext)
     const { customers } = useContext(CustomerContext)
 
     const [modal, setModal] = useState(false)
     const toggle = () => setModal(!modal)
+
+    useEffect(() => {
+        const subset = animals.filter(animal => animal.name.toLowerCase().includes(searchTerm))
+        setFiltered(subset)
+    }, [searchTerm])
+
+    useEffect(() => {
+        setFiltered(animals)
+    }, [animals])
 
     return (
         <>
@@ -26,18 +36,20 @@ export default () => {
                     toggle()
                 }
             }}>Make Appointment</Button>
-            <div className="animals">
-                {
-                    animals.map(ani => {
-                        const matchingLocation = locations.find(loc => loc.id === ani.locationId)
-                        const matchingCustomer = customers.find(customer => customer.id === ani.customerId)
+            
+        <div className="animals">
+            {
+                filteredAnimals.map(animal => {
+                    const clinic = locations.find(l => l.id === animal.locationId)
+                    const owner = customers.find(c => c.id === animal.customerId)
 
-                        return <Animal key={ani.id} animal={ani}
-                            customer={matchingCustomer}
-                            location={matchingLocation} />
-                    })
-                }
-            </div>
+                    return <Animal key={animal.id}
+                        location={clinic}
+                        customer={owner}
+                        animal={animal} />
+                    }
+                    )}
+                    </div>
                     <Modal isOpen={modal} toggle={toggle}>
                     <ModalHeader toggle={toggle}>
                         New Animal
