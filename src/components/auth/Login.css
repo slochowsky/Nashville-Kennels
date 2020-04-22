@@ -1,5 +1,21 @@
+.darkgray {
+    color: #747678;
+}
+
+.authContainer {
+    display: flex;
+    padding: 0 10rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
 .h1, h1 {
     font-size: 2.5rem;
+}
+
+.welcome {
+    margin-bottom: 4rem;
 }
 
 fieldset {
@@ -9,14 +25,8 @@ fieldset {
     border: 0;
 }
 
-.form--login {
-    display: inline-block;
-    margin: 0 auto;
-    text-align: left;
-}
-
-.form--login > fieldset > input[type="email"],
-.form--login > fieldset > input[type="password"] {
+input[type="email"],
+input[type="password"] {
     width: 25em;
 }
 
@@ -27,7 +37,7 @@ fieldset {
 
 .form-control {
     display: block;
-    width: 100%;
+    width: 94%;
     height: calc(1.5em + .75rem + 2px);
     padding: .375rem .75rem;
     font-size: 1rem;
@@ -44,15 +54,36 @@ fieldset {
 
 .container--login {
     text-align: center;
+    flex: 1;
+    flex-basis: 33%;
 }
 
 .form--login {
+    font-size: 1.25rem;
     background-position-x: right;
     background-image: url(logo.png);
     z-index: 1;
     min-height: 25rem;
-    min-width: 45rem;
+    min-width: 35rem;
     background-color: hsla(0,0%,100%,0.40);
     background-blend-mode: overlay;
     background-repeat: no-repeat;
+    display: inline-block;
+    margin: 0 auto;
+    text-align: left;
+
+}
+
+.form--register {
+    background-position-x: right;
+    z-index: 1;
+    min-height: 25rem;
+    width: 45rem;
+    background-color: hsla(0,0%,100%,0.40);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    display: inline-block;
+    margin: 0 auto;
+    text-align: left;
+
 }
