@@ -36,6 +36,14 @@ export default () => {
                     toggle()
                 }
             }}>Make Appointment</Button>
+                    <Modal isOpen={modal} toggle={toggle}>
+                    <ModalHeader toggle={toggle}>
+                        New Animal
+                    </ModalHeader>
+                    <ModalBody>
+                        <AnimalForm toggler={toggle} />
+                    </ModalBody>
+                </Modal>
             
         <div className="animals">
             {
@@ -50,14 +58,6 @@ export default () => {
                     }
                     )}
                     </div>
-                    <Modal isOpen={modal} toggle={toggle}>
-                    <ModalHeader toggle={toggle}>
-                        New Animal
-                    </ModalHeader>
-                    <ModalBody>
-                        <AnimalForm toggler={toggle} />
-                    </ModalBody>
-                </Modal>
 </>
     )
 }
