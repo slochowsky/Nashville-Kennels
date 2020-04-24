@@ -16,10 +16,10 @@ export const SearchResults = ({ searchTerms }) => {
 
     return (
         <div className="searchResults">
-            <h3>Results:</h3>
+            <h3>Results</h3>
             <div className="animals">
                 {
-                    filteredAnimals.map(animal => <div key="{ animal.id }">Name: { animal.name }</div>)
+                    filteredAnimals.map(animal => <div key={ animal.id }>Name - { animal.name }</div>)
                 }
             </div>
         </div>

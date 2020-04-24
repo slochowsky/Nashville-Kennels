@@ -10,7 +10,7 @@ export const SearchBar = ({ setTerms }) => {
                 <label htmlFor="searchTerms">Search:</label>
                 <input onKeyUp={ e => setTerms(e.target.value) }
                     type="text"
-                    id="employeeNasearchTermsme"
+                    id="searchTerms"
                     ref={terms}
                     required
                     autoFocus

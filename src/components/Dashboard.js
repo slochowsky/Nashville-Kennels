@@ -27,9 +27,13 @@ export default () => {
                             <div className="dataContainer">
                                 <h2>Nashville Kennels</h2>
                                 <small>Loving care when you're not there.</small>
+                                <h3>Locations</h3>
                                 <LocationList />
+                                <h3>Animals</h3>
                                 <AnimalList />
+                                <h3>Customers</h3>
                                 <CustomerList />
+                                <h3>Employees</h3>
                                 <EmployeeList />
                             </div>
                         </LocationProvider>
