@@ -29,6 +29,22 @@ export const EmployeeProvider = (props) => {
         })
             .then(getEmployees)
     }
+    const updateEmployee = employee => {
+        return fetch(`http://localhost:8088/employees/${employee.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(employee)
+        })
+            .then(getEmployees)
+    }
+    const fireEmployee = employeeId => {
+        return fetch(`http://localhost:8088/employees/${employeeId}`, {
+            method: "DELETE"
+        })
+            .then(getEmployees)
+    }
 
     /*
         Load all animals when the component is mounted. Ensure that
@@ -44,7 +60,7 @@ export const EmployeeProvider = (props) => {
 
     return (
         <EmployeeContext.Provider value={{
-            employees, addEmployee
+            employees, addEmployee, updateEmployee, fireEmployee
         }}>
             {props.children}
         </EmployeeContext.Provider>

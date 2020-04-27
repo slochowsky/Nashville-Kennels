@@ -15,20 +15,23 @@ export default () => {
 
     return (
         <>
-
             <div className="fakeLink href" onClick={toggle}><Button color="success">Add New Employee</Button></div>
-        <div className="employees">
-            {
-                employees.map(employee => {
-                    const address = locations.find(l => l.id === employee.locationId)
-                    
-                    return <Employee key={employee.id}
-                    location={address}
-                    employee={employee} />
-                }
-                )}
-        </div>
-        <Modal isOpen={modal} toggle={toggle}>
+            <div className="employees">
+                {
+                    employees.map(employee => {
+                        
+                        const address = locations.find(l => l.id === employee.locationId)
+
+                        return <Employee 
+                        key={employee.id}
+                        location={address}
+                        employee={employee} 
+                        />
+                    }
+                    )}
+            </div>
+            
+            <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>
                     New Employee
                 </ModalHeader>
@@ -37,5 +40,5 @@ export default () => {
                 </ModalBody>
             </Modal>
         </>
-)
+    )
 }

@@ -27,6 +27,22 @@ export const AnimalProvider = (props) => {
         })
             .then(getAnimals)
     }
+    const releaseAnimal = animalId => {
+        return fetch(`http://localhost:8088/animals/${animalId}`, {
+            method: "DELETE"
+        })
+            .then(getAnimals)
+    }
+    const updateAnimal = animal => {
+        return fetch(`http://localhost:8088/animals/${animal.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(animal)
+        })
+            .then(getAnimals)
+    }
 
     /*
         Load all animals when the component is initialized. Ensure that
@@ -53,7 +69,7 @@ export const AnimalProvider = (props) => {
     return (
         <AnimalContext.Provider value={
             {
-                animals, addAnimal
+                animals, addAnimal, releaseAnimal, updateAnimal
             }
         }>
             {props.children}
