@@ -28,6 +28,22 @@ export const LocationProvider = (props) => {
         })
             .then(getLocations)
     }
+    const removeLocation = locationId => {
+        return fetch(`http://localhost:8088/locations/${locationId}`, {
+            method: "DELETE"
+        })
+            .then(getLocations)
+    }
+    const updateLocation = location => {
+        return fetch(`http://localhost:8088/locations/${location.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(location)
+        })
+            .then(getLocations)
+    }
 
     /*
         Load all animals when the component is mounted. Ensure that
@@ -43,7 +59,7 @@ export const LocationProvider = (props) => {
 
     return (
         <LocationContext.Provider value={{
-            locations, addLocation
+            locations, addLocation, removeLocation, updateLocation
         }}>
             {props.children}
         </LocationContext.Provider>
